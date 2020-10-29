@@ -18,7 +18,8 @@
     "react-phone-input-2": "^2.13.8",
     "react-scripts": "3.4.3",
     "typescript": "~3.7.2",
-    "yup": "^0.29.3"
+    "yup": "^0.29.3",
+    "surge": "^0.21.6"
   },
   "scripts": {
     "start": "react-scripts start",
