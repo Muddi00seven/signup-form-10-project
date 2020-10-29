@@ -81,13 +81,18 @@ const useStyles = makeStyles({
         initialValues= {{firstname: '', secondname: '', email: '' ,cnic: ''}}
         validationSchema={yup.object({
             firstname: yup.string().max(15 ,"Name Should be greater than 15 characters").required("Required"),
-            secondname: yup.string().max(15 ,"Name Should be greater than 15 characters").required("Required"),
-            email: yup.string().max(15 ,"Name Should be greater than 15 characters").required("Required"),
-            cnic: yup.string().max(15 ,"Name Should be greater than 15 characters").required("Required"),
+            secondname: yup.string().max(15 ,"Last Name Should be greater than 15 characters").required("Required"),
+            email: yup.string().email().required("Email is Mandatory"),
 
-
+            cnic: yup.number()
+            .min(13, 'Must Be More Than 12 Characters')
+            .required("Please Enter Cnic Number")
         })}
-         
+         onSubmit={(value) => {
+            //  this is for debug
+            //  console.log('This Is Value' , value)
+             handlenext();
+         }}
         >
           <Form className={classes.root} autoComplete="off">
             <Field className = "form" placeHolder = "First Name" name='firstname' type='text' />
