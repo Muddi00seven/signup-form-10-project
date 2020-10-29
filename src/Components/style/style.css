@@ -1,6 +1,7 @@
 .main-container{
     text-align: center;
 
+
 }
 
 .main-heading{
@@ -8,5 +9,26 @@
 }
 
 .button-container{
-    
+
+}
+
+.country{
+    margin-left: 260px;
+}
+.form{
+    width: 300px;
+    height: 30px;
+    font-size: 16px;
+}
+
+.form1{
+    width: 300px;
+    height: 30px;
+    font-size: 16px;
+}
+
+.form2{
+    width: 300px;
+    height: 30px;
+    font-size: 16px;
 }

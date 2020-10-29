@@ -22,6 +22,7 @@ const useStyles = makeStyles({
         backgroundColor: 'transparent',
       },
       alignContent : "center",
+      justifyContent : 'center'
     },
     icon: {
       borderRadius: '50%',
@@ -74,7 +75,6 @@ const useStyles = makeStyles({
 
   export const Form1: React.FC<props> = ({ handlenext }) => {
     const classes = useStyles();
-    // const classes1 = useStyles1();
     return (
       <div  className="div"  >
         <Formik
@@ -119,22 +119,14 @@ const useStyles = makeStyles({
               <ErrorMessage name="cnic" />
             </span>
             <br />
-            <PhoneInput
-              country={'pk'}
-              inputProps={{
-                // country:{'us'},
-                name: 'phone',
-                required: true,
-                autoFocus: true,
-              }}
-            />
+            
+          
             <div className = "buttonform">
             <Button variant="contained" type="submit" color="primary" disableElevation>
               Next Section
              </Button>
              </div>
           </Form>
-          {/* {/* </div> */}
         </Formik>
       </div>
     )
@@ -162,26 +154,33 @@ const useStyles = makeStyles({
           <Form className={classes.root} autoComplete="off">
           <div className = "column1"  >
           <label className = "label">College Name</label>
+          <br/>
             <Field className = "form1" placeHolder = "Enter you college name" name='collegename' type='text' />
             <br />
+            <br/>
             <span className="Error">
               <ErrorMessage name="collegename" />
             </span>
             <label className = "label3">Marks Scored</label>
+            <br/>
             <Field name='marksscored' placeHolder = "Enter marks scored" type='number' className = "form1" />
             <br />
             <span className="Error">
               <ErrorMessage name="marksscored" />
             </span>
+            <br/>
             </div>
             <div className = "column2"  >
             <span className = "label2">Degree Name</span>
+            <br/>
             <Field name='degreename' placeHolder = "Enter you degree name" className = "form1" type='text' />
             <br />
             <span className="Error">
               <ErrorMessage name="degreename" />
             </span>
+            <br/>
             <label className = "label4">Completion Year</label>
+            <br/>
             <Field className = "form1" placeHolder = "Enter the year of completion" name='yearofcompletion' type='number' />
             <br />
             <span className="Error">
@@ -195,7 +194,6 @@ const useStyles = makeStyles({
              </Button>
              </div>
           </Form>
-          {/* {/* </div> */}
         </Formik>
       </div>
     )
@@ -225,15 +223,18 @@ export const Form3: React.FC<props> = ({ handlenext }) => {
             <div className = "column1ofform3">
             <Field className = "form2" placeHolder = "Country name" name='countary' type='text' />
             <br />
+            <br />
             <span className="Error">
               <ErrorMessage name="countary" />
             </span>
             <Field name='province' className = "form2" type='text' placeHolder = "Province name" />
             <br />
+            <br />
             <span className="Error">
               <ErrorMessage name="province" />
             </span>
             <Field name='city' type='text' className = "form2" placeHolder = "City name" />
+            <br />
             <br />
             <span className="Error">
               <ErrorMessage name="city" />
