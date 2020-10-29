@@ -7,7 +7,21 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
 
 
+const GreenCheckbox = withStyles({
+  root: {
+    color: green[400],
+    '&$checked': {
+      color: green[600],
+    },
+  },
+  checked: {},
+})((props: CheckboxProps) => <Checkbox color="default" {...props} />);
 
+
+const steplabel = () => {
+  return ['Account Information', 'Educational Information', 'Personal Details']
+
+}
 
 function App() {
   return (
