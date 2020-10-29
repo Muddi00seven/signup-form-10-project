@@ -139,3 +139,125 @@ const useStyles = makeStyles({
       </div>
     )
   }
+
+
+//   SECOND STEP
+  export const Form2: React.FC<props> = ({ handlenext }) => {
+    const classes = useStyles();
+    return (
+      <div className="div1" >
+        <Formik
+          initialValues={{ collegename: '', degreename: '', marksscored: 0, yearofcompletion: 0 }}
+          validationSchema={yup.object({
+            collegename: yup.string().required('Required'),
+            degreename: yup.string().required('Required'),
+            marksscored: yup.number().required('Required'),
+            yearofcompletion: yup.number().required('Required')
+          })}
+          onSubmit={(values) => {
+            console.log(values)
+            handlenext();
+          }}
+        >
+          <Form className={classes.root} autoComplete="off">
+          <div className = "column1"  >
+          <label className = "label">College Name</label>
+            <Field className = "form1" placeHolder = "Enter you college name" name='collegename' type='text' />
+            <br />
+            <span className="Error">
+              <ErrorMessage name="collegename" />
+            </span>
+            <label className = "label3">Marks Scored</label>
+            <Field name='marksscored' placeHolder = "Enter marks scored" type='number' className = "form1" />
+            <br />
+            <span className="Error">
+              <ErrorMessage name="marksscored" />
+            </span>
+            </div>
+            <div className = "column2"  >
+            <span className = "label2">Degree Name</span>
+            <Field name='degreename' placeHolder = "Enter you degree name" className = "form1" type='text' />
+            <br />
+            <span className="Error">
+              <ErrorMessage name="degreename" />
+            </span>
+            <label className = "label4">Completion Year</label>
+            <Field className = "form1" placeHolder = "Enter the year of completion" name='yearofcompletion' type='number' />
+            <br />
+            <span className="Error">
+              <ErrorMessage name="yearofcompletion" />
+            </span>
+            </div>
+            <br />
+            <div className = "buttonform2">
+            <Button variant="contained" type="submit" color="primary" disableElevation>
+              Next Section
+             </Button>
+             </div>
+          </Form>
+          {/* {/* </div> */}
+        </Formik>
+      </div>
+    )
+  }
+  
+
+  
+// THIRD STEP
+export const Form3: React.FC<props> = ({ handlenext }) => {
+    const classes = useStyles();
+    return (
+      <div className="div2" >
+        <Formik
+          initialValues={{ countary: '', province: '', city: '', gender: '' }}
+          validationSchema={yup.object({
+            countary: yup.string().required('Required'),
+            province: yup.string().required('Required'),
+            city: yup.string().required('Required'),
+            gender: yup.string().required('Gender selection is mandatory')
+          })}
+          onSubmit={(values) => {
+            console.log(values)
+            handlenext();
+          }}
+        >
+          <Form className={classes.root} autoComplete="off">
+            <div className = "column1ofform3">
+            <Field className = "form2" placeHolder = "Country name" name='countary' type='text' />
+            <br />
+            <span className="Error">
+              <ErrorMessage name="countary" />
+            </span>
+            <Field name='province' className = "form2" type='text' placeHolder = "Province name" />
+            <br />
+            <span className="Error">
+              <ErrorMessage name="province" />
+            </span>
+            <Field name='city' type='text' className = "form2" placeHolder = "City name" />
+            <br />
+            <span className="Error">
+              <ErrorMessage name="city" />
+            </span>
+            </div>
+            <div  className = "genderinfo">
+          <FormLabel style = {{fontSize : "30px", color : 'yellow'}} color = "primary" component="legend">Gender</FormLabel>
+            <RadioGroup defaultValue="female" aria-label="gender" name="gender">
+              <FormControlLabel value="female" control={<StyledRadio />} label="Female" />
+              <FormControlLabel value="male" control={<StyledRadio />} label="Male" />
+              <FormControlLabel value="other" control={<StyledRadio />} label="Other" />
+              <FormControlLabel
+                value="notinterested"
+                control={<StyledRadio />}
+                label="Not want to tell"
+              />
+            </RadioGroup>
+            <span className="Error">
+              <ErrorMessage name="gender" />
+            </span>
+            </div>
+          </Form>
+          {/* {/* </div> */}
+        </Formik>
+      </div>
+    )
+  }
