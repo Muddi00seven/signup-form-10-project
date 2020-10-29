@@ -241,7 +241,7 @@ export const Form3: React.FC<props> = ({ handlenext }) => {
             </span>
             </div>
             <div  className = "genderinfo">
-          <FormLabel style = {{fontSize : "30px", color : 'yellow'}} color = "primary" component="legend">Gender</FormLabel>
+          <FormLabel style = {{fontSize : "30px", color : 'grey' ,}} color = "primary" component="legend">Gender</FormLabel>
             <RadioGroup defaultValue="female" aria-label="gender" name="gender">
               <FormControlLabel value="female" control={<StyledRadio />} label="Female" />
               <FormControlLabel value="male" control={<StyledRadio />} label="Male" />
