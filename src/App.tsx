@@ -24,11 +24,75 @@ const steplabel = () => {
 }
 
 function App() {
+
+  const [state, setState] = React.useState({
+    checkedG: true,
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
+
+  const [currentStep, setCurrentStep] = useState(0)
+  // function to get the content of all forms
+  const getcontentofstep = (stepIndex: number, gettonextstep: () => void) => {
+    switch (stepIndex) {
+      case 0:
+        return <Form1 handlenext={gettonextstep} />
+      case 1:
+        return <Form2 handlenext={gettonextstep} />
+      case 2:
+        return <Form3 handlenext={gettonextstep} />
+      default:
+        return "Unknown step index";
+    }
+  }
+  // function to go on next step
+
+  const gettonextstep = () => {
+    setCurrentStep((step: number) => step + 1)
+    console.log("clicking next");
+
+  }
+
+
+  const resetsteps = () => {
+    setCurrentStep(0);
+  }
   return (
  <>
- <div>
-   HELLO WORLD
- </div>
+ <div className="background">
+      <h1 className="heading">Multi-Step Form</h1>
+      <Stepper activeStep={currentStep} style={{ backgroundColor: "goldenrod" }} alternativeLabel >
+        {steplabel().map((value) => (
+          // return (
+          <Step key={value}>
+            <StepLabel>{value}</StepLabel>
+          </Step>
+          // )
+        ))}
+      </Stepper>
+      { currentStep === 2 ?
+            <><div>
+          {getcontentofstep(currentStep, gettonextstep)}
+        </div>
+       <div className = 'form3buttons'>
+       <FormControlLabel
+            control={<GreenCheckbox checked = {state.checkedG} onChange={handleChange} name="checkedG" />}
+            label="I hereby confirm that the given information is correct" />
+            <br/>
+        <Button variant="contained" type="submit" onClick = {resetsteps} color="primary" disabled={state.checkedG === false}>
+                        Finish and Reset
+          </Button>
+          </div>
+          </> 
+      :   
+          <div>
+      {getcontentofstep(currentStep, gettonextstep)}
+    </div>
+    }
+    </div>
 
  </>
 
