@@ -57,11 +57,80 @@ const useStyles = makeStyles({
       },
     },
   });
-
-export const form = () => {
+  function StyledRadio(props: RadioProps) {
+    const classes = useStyles();
+  
     return (
-        <div>
-            
-        </div>
+      <Radio
+        className={classes.root}
+        disableRipple
+        color="default"
+        checkedIcon={<span className={clsx(classes.icon, classes.checkedIcon)} />}
+        icon={<span className={classes.icon} />}
+        {...props}
+      />
+    );
+  }
+
+  export const Form1: React.FC<props> = ({ handlenext }) => {
+    const classes = useStyles();
+    // const classes1 = useStyles1();
+    return (
+      <div  className="div"  >
+        <Formik
+        initialValues= {{firstname: '', secondname: '', email: '' ,cnic: ''}}
+        validationSchema={yup.object({
+            firstname: yup.string().max(15 ,"Name Should be greater than 15 characters").required("Required"),
+            secondname: yup.string().max(15 ,"Name Should be greater than 15 characters").required("Required"),
+            email: yup.string().max(15 ,"Name Should be greater than 15 characters").required("Required"),
+            cnic: yup.string().max(15 ,"Name Should be greater than 15 characters").required("Required"),
+
+
+        })}
+         
+        >
+          <Form className={classes.root} autoComplete="off">
+            <Field className = "form" placeHolder = "First Name" name='firstname' type='text' />
+            <br />
+            <span className="Error">
+              <ErrorMessage name="firstname" />
+            </span>
+            <br />
+            <Field className = "form" name='secondname' placeHolder = "Second Name" type='text' />
+            <br />
+            <span className="Error">
+              <ErrorMessage name="secondname" />
+            </span>
+            <br />
+            <Field className = "form" name='email' type='text' placeHolder = "Email Adress" />
+            <br />
+            <span className="Error">
+              <ErrorMessage name="email" />
+            </span>
+            <br />
+            <Field className = "form" name='cnic' type='number' placeHolder = "Indentity Number" />
+            <br />
+            <span className="Error">
+              <ErrorMessage name="cnic" />
+            </span>
+            <br />
+            <PhoneInput
+              country={'pk'}
+              inputProps={{
+                // country:{'us'},
+                name: 'phone',
+                required: true,
+                autoFocus: true,
+              }}
+            />
+            <div className = "buttonform">
+            <Button variant="contained" type="submit" color="primary" disableElevation>
+              Next Section
+             </Button>
+             </div>
+          </Form>
+          {/* {/* </div> */}
+        </Formik>
+      </div>
     )
-}
+  }
