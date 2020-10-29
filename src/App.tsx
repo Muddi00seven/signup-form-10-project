@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
+import './Components/style/style.css';
 
 
 const GreenCheckbox = withStyles({
@@ -62,9 +63,9 @@ function App() {
   }
   return (
  <>
- <div className="background">
-      <h1 className="heading">Multi-Step Form</h1>
-      <Stepper activeStep={currentStep} style={{ backgroundColor: "goldenrod" }} alternativeLabel >
+ <div className="main-container">
+      <h1 className="main-heading">SIGNUP MULTI STEP FORM </h1>
+      <Stepper activeStep={currentStep}  alternativeLabel >
         {steplabel().map((value) => (
           // return (
           <Step key={value}>
@@ -77,7 +78,7 @@ function App() {
             <><div>
           {getcontentofstep(currentStep, gettonextstep)}
         </div>
-       <div className = 'form3buttons'>
+       <div className='button-container'>
        <FormControlLabel
             control={<GreenCheckbox checked = {state.checkedG} onChange={handleChange} name="checkedG" />}
             label="I hereby confirm that the given information is correct" />
